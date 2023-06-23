@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\MachineLearningController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,6 @@ Route::controller(AuthenticationController::class)->group(function(){
     Route::post('/change-password', 'changePassword')->middleware('auth:sanctum');
 });
 
-
+Route::post('/predict', [MachineLearningController::class, 'prediction']);
+Route::post('/topic-modeling', [MachineLearningController::class, 'topicModeling']);
+Route::post('/summarize', [MachineLearningController::class, 'summarize']);
