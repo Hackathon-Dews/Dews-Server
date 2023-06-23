@@ -101,5 +101,37 @@ class AuthenticationController extends Controller
         }
     }
     
+     public function changePassword(Request $request){
+        try {
+            if(Auth::check()){
+                $rules = [
+                    'password'      => 'required|min:6',
+                ];
+                $messages = [
+                    'password.required'     => 'Password wajib diisi',
+                    'password.min'          => 'Password minimal 6 karakter',
+                ];
+                $validator = Validator::make($request->all(), $rules, $messages);
+                if ($validator->fails()) {
+                    return new PostResource(false, $validator->errors()->first());
+                }
+                $user = $request->user();
+                $user = User::where('id',$user->id)->first();
+                try {
+                $user->update([
+                    'password' => Hash::make($request->password)
+                ]);
+                return new PostResource(true, "Password Berhasil diperbarui");
+                } catch (\Throwable $th) {
+                    return new PostResource(false, "Password Gagal diperbarui");
+                }
+            }
+        } catch (\Throwable $th) {
+            return new PostResource(false,"unauthenticated");
+        }
+    }
+
+
+
 
 }
