@@ -50,8 +50,46 @@ class AuthenticationController extends Controller
     
     }
 
+    public function register(Request $request)
+    {
+        $rules = [
+            'username' => 'required|unique:users',
+            'name' => 'required|min:4|max:32',
+            'password' => 'required|min:6|confirmed',
+            'roles_id' => 'required',
 
-   
+        ];
+
+        $messages = [
+            'username.required'        => 'Email wajib diisi',
+            'username.unique'          => 'Email sudah terdaftar',
+            'name.required' => 'Nama Lengkap wajib diisi',
+            'name.min'      => 'Nama lengkap minimal 4 karakter',
+            'name.max'      => 'Nama lengkap maksimal 32 karakter',
+            'password.required'     => 'Password wajib diisi',
+            'password.min'          => 'Password minimal 6 karakter',
+            'password.confirmed'    => 'Password tidak sama dengan konfirmasi password',
+            'roles_id.required'     => 'Roles tidak tersedia',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return new PostResource(false, $validator->errors()->first());
+        }
+        $data = [
+            'username' => strtolower($request->username),
+            'name' => strtolower($request->name),
+            'password' => Hash::make($request->password),
+            'roles_id' => $request->roles_id,
+        ];
+        try {
+            $user = User::create($data);
+            return new PostResource(true, "User berhasil teregistrasi", $user);
+        } catch (\Throwable $th) {
+            return new PostResource(false, $th->getMessage());
+        }
+    }
+
 
     
 
