@@ -3,64 +3,80 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserHistory;
-use App\Http\Requests\StoreUserHistoryRequest;
-use App\Http\Requests\UpdateUserHistoryRequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\PostResource;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Validator;
 
 class UserHistoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+    
+    public function getUserHistory($id = null){
+        try {
+            if (isset($id)) {
+                $data = UserHistory::where('id', $id)->first();
+            } else {
+                $data = UserHistory::all();
+            }
+            return new PostResource(true, "data History Pengguna ditemukan", $data);
+        } catch (\Throwable $th) {
+            return new PostResource(false, "data History Pengguna tidak ada");
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function getHistoryByUserId($id){
+        try {
+            $data = UserHistory::where('user_id', $id)->get();
+
+            return new PostResource(true, "data History Pengguna ditemukan", $data);
+        } catch (\Throwable $th) {
+            return new PostResource(false, "data History Pengguna tidak ada");
+        }
+    }
+ 
+    public function addUserHistory(Request $request)
     {
-        //
+
+        if (!Auth::check()) {
+            return new PostResource(false, "unauthenticated");
+        }
+        try {
+            $rules = [
+                'text' => 'required'
+            ];
+
+            $validation = Validator::make($request->all(), $rules);
+            if ($validation->fails()) {
+                return new PostResource(false, "User History gagal ditambahkan", $validation->errors()->all());
+            }
+
+            $data = [
+                'user_id' => $request->user()->id,
+                'text' => $request->text
+            ];
+            $userHistory = UserHistory::create($data);
+
+            return new PostResource(true, "User History berhasil ditambahkan", $userHistory);
+        } catch (\Throwable $th) {
+            return new PostResource(false, "User History gagal ditambahkan");
+        }
+    }
+    
+    public function deleteUserHistory(Request $request)
+    {
+        if (!Auth::check()) {
+            return new PostResource(false, "unauthenticated");
+        }
+
+        try {
+            $userHistory = UserHistory::where('id', $request->id_history)->first();
+            $userHistory->delete();
+            return new PostResource(true, "Data Feedback Berhasil dihapus", $userHistory);
+        } catch (\Throwable $th) {
+            return new PostResource(false, "Data Feedback Gagal dihapus");
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreUserHistoryRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(UserHistory $userHistory)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(UserHistory $userHistory)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateUserHistoryRequest $request, UserHistory $userHistory)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(UserHistory $userHistory)
-    {
-        //
-    }
 }

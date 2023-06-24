@@ -9,7 +9,6 @@ use App\Http\Resources\PostResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 
 class AuthenticationController extends Controller
 {
@@ -25,10 +24,12 @@ class AuthenticationController extends Controller
             'password.min'          => 'Password minimal 6 karakter',
             'password.confirmed'    => 'Password tidak sama dengan konfirmasi password',
         ];
+
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
             return new PostResource(false, $validator->errors()->first());
         }
+
         $credentials = request(['username', 'password']);
         if (!Auth::attempt($credentials)) {
             return new PostResource(false, "username atau password salah");

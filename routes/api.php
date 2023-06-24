@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\MachineLearningController;
+use App\Http\Controllers\UserHistoryController;
+use App\Models\UserHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +25,26 @@ Route::controller(AuthenticationController::class)->group(function(){
     Route::get('/logout', 'logout')->middleware('auth:sanctum');
     Route::post('/change-password', 'changePassword')->middleware('auth:sanctum');
 });
+
+Route::group([
+    'controller'    => UserHistoryController::class,
+    'prefix'        => '/user-history',
+], function () {
+    Route::get('/', 'getUserHistory');
+    Route::get('/{id}', 'getUserHistory');
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::post('/', 'addUserHistory');
+        Route::delete('/{id}', 'deleteUserHistory');
+    });
+
+});
+
+Route::controller(UserHistoryController::class)->group(function(){
+    Route::prefix('/user-history-by-user-id')->group(function(){
+        Route::get('/{id}', 'getHistoryByUserId');
+    });
+});
+
 
 Route::post('/predict', [MachineLearningController::class, 'prediction']);
 Route::post('/topic-modeling', [MachineLearningController::class, 'topicModeling']);
