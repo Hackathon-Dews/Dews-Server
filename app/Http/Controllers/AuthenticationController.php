@@ -102,6 +102,7 @@ class AuthenticationController extends Controller
         }
     }
     
+    
      public function changePassword(Request $request){
         try {
             if(Auth::check()){
@@ -131,8 +132,6 @@ class AuthenticationController extends Controller
             return new PostResource(false,"unauthenticated");
         }
     }
-
-
 
 
 }

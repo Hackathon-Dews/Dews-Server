@@ -44,6 +44,7 @@ class UserHistoryController extends Controller
         }
         try {
             $rules = [
+                'user_id' => 'required',
                 'text' => 'required'
             ];
 
@@ -52,8 +53,14 @@ class UserHistoryController extends Controller
                 return new PostResource(false, "User History gagal ditambahkan", $validation->errors()->all());
             }
 
+
+            $petugas = User::where('id', $request->user_id)->first();
+            if ($petugas == null) {
+                return new PostResource(false, "User Tidak ditemukan");
+            }
+
             $data = [
-                'user_id' => $request->user()->id,
+                'user_id' => $request->user_id,
                 'text' => $request->text
             ];
             $userHistory = UserHistory::create($data);

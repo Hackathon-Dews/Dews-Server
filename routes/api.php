@@ -46,6 +46,6 @@ Route::controller(UserHistoryController::class)->group(function(){
 });
 
 
-Route::post('/predict', [MachineLearningController::class, 'prediction']);
-Route::post('/topic-modeling', [MachineLearningController::class, 'topicModeling']);
-Route::post('/summarize', [MachineLearningController::class, 'summarize']);
+Route::post('/predict', [MachineLearningController::class, 'prediction'])->middleware('auth:sanctum');
+Route::post('/topic-modeling', [MachineLearningController::class, 'topicModeling'])->middleware('auth:sanctum');
+Route::post('/summarize', [MachineLearningController::class, 'summarize'])->middleware('auth:sanctum');
