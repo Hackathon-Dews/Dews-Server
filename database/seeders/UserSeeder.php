@@ -17,18 +17,23 @@ class UserSeeder extends Seeder
     {
         $data = [
             [
-                'username' => 'userbiasa1',
+                'username' => 'userbiasa',
                 'name' => 'userbiasa',
                 'password' => Hash::make('password'),
                 'roles_id' => 1,
             ],
             [
-                'username' => 'userpremium2',
+                'username' => 'userpremium',
                 'name' => 'userpremium',
                 'password' => Hash::make('password'),
                 'roles_id' => 2,
             ],
-
+            [
+                'username' => 'userdeveloper',
+                'name' => 'userdeveloper',
+                'password' => Hash::make('password'),
+                'roles_id' => 3,
+            ],
         ];
         foreach ($data as $d) {
             $d['created_at'] = Carbon::now()->format('Y-m-d H:i:s');
