@@ -142,6 +142,136 @@
 			]
 		},
 		{
+			"name": "UserHistory",
+			"item": [
+				{
+					"name": "Get All UserHistory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user-history",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user-history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get UserHistory by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/user-history/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user-history",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get UserHistory by user Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/user-history-by-user-id/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user-history-by-user-id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add UserHistory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 1|sGodM7GLN8bhCuTa0MQqr3i5Wh2wZEPt2JU4LhkH",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\" : 1,\r\n    \"text\" : \"adjkloqwijd qowdjqoidqod\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user-history",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user-history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete UserHistory",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_feedback\" : 21\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user-",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user-"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Machine Learning Jadi",
 			"item": [
 				{
@@ -177,6 +307,38 @@
 					"response": []
 				},
 				{
+					"name": "summarize",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 3|zuAifCsFTvHnMEJhSdjkz1fbH1akPGpQtwkBNhCM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"num_sentences\": 2,\r\n    \r\n    \"text\": \"Apa itu monetize dan platform apa saja yang bisa di monetize? Berikut penjelasannya.Di era digital seperti sekarang, kita bisa dengan mudah mendapatkan uang melalui media sosial, seperti YouTube ataupun Tiktok dengan sistem monetize. Monetize adalah cara untuk mengubah sesuatu menjadi uang.Lalu bagaimana cara kerja monetize itu sendiri? Pada artikel kali ini OCBC NISP akan membahas tentang pengertian, tujuan, keuntungan serta cara melakukan monetize pada Youtube dan Tiktok. Yuk simak!Apa itu Monetize?Secara umum, istilah monetize adalah cara untuk merubah sesuatu menjadi penghasilan yaitu uang. Di dalam lingkup digital dan media sosial, monetize memiliki arti yang sedikit berbeda. Monetize, yaitu ketika seseorang memiliki sebuah website atau media sosial seperti Instagram, TikTok, atau YouTube. Lalu platform tersebut mereka manfaatkan untuk mendapatkan uang.Ada banyak pilihan cara yang bisa orang tersebut gunakan dalam monetize platform-nya. Misalnya dengan cara endorse, adsense, partnership, dan sebagainya. Namun, untuk dapat melakukan monetize secara optimal, tentunya tidak mudah. Agar platform mereka mencapai status monetized, mereka wajib menaati berbagai syarat dan ketentuan dari platform tersebut atau pihak yang memberikan monetize.Cara Monetize YouTubeSesuai dengan pengertian monetize artinya menghasilkan uang, YouTube menjadi salah satu platform digital paling umum untuk di monetize. Misalnya, Anda adalah seorang koki yang ingin menjadi content creator di YouTube. Anda bermaksud untuk mendapatkan penghasilan melalui konten video memasak yang diunggah pada YouTube channel Anda.Agar konten video Anda dapat menghasilkan uang, tentunya perlu berstatus monetized. Ada beberapa cara monetize YouTube yang bisa dicoba. Seperti penayangan iklan, konten bersponsor, ataupun adsense dari YouTube itu sendiri. Namun, untuk mendapatkan status monetized, terdapat syarat dan kebijakan yang mesti Anda lewati dan penuhi.Misalnya, Anda ingin mendapatkan adsense dari YouTube itu sendiri, lalu ada beberapa syarat-syarat yang mesti kamu penuhi. Apa saja syarat monetize Youtube? Berikut daftar kebijakan YouTube bagi penggunanya agar mendapatkan adsense monetize adalah\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/summarize",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"summarize"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "topic modeling",
 					"request": {
 						"method": "POST",
@@ -197,32 +359,6 @@
 							],
 							"path": [
 								"topic-modeling"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "summarize",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"num_sentences\": 2,\r\n    \r\n    \"text\": \"Apa itu monetize dan platform apa saja yang bisa di monetize? Berikut penjelasannya.Di era digital seperti sekarang, kita bisa dengan mudah mendapatkan uang melalui media sosial, seperti YouTube ataupun Tiktok dengan sistem monetize. Monetize adalah cara untuk mengubah sesuatu menjadi uang.Lalu bagaimana cara kerja monetize itu sendiri? Pada artikel kali ini OCBC NISP akan membahas tentang pengertian, tujuan, keuntungan serta cara melakukan monetize pada Youtube dan Tiktok. Yuk simak!Apa itu Monetize?Secara umum, istilah monetize adalah cara untuk merubah sesuatu menjadi penghasilan yaitu uang. Di dalam lingkup digital dan media sosial, monetize memiliki arti yang sedikit berbeda. Monetize, yaitu ketika seseorang memiliki sebuah website atau media sosial seperti Instagram, TikTok, atau YouTube. Lalu platform tersebut mereka manfaatkan untuk mendapatkan uang.Ada banyak pilihan cara yang bisa orang tersebut gunakan dalam monetize platform-nya. Misalnya dengan cara endorse, adsense, partnership, dan sebagainya. Namun, untuk dapat melakukan monetize secara optimal, tentunya tidak mudah. Agar platform mereka mencapai status monetized, mereka wajib menaati berbagai syarat dan ketentuan dari platform tersebut atau pihak yang memberikan monetize.Cara Monetize YouTubeSesuai dengan pengertian monetize artinya menghasilkan uang, YouTube menjadi salah satu platform digital paling umum untuk di monetize. Misalnya, Anda adalah seorang koki yang ingin menjadi content creator di YouTube. Anda bermaksud untuk mendapatkan penghasilan melalui konten video memasak yang diunggah pada YouTube channel Anda.Agar konten video Anda dapat menghasilkan uang, tentunya perlu berstatus monetized. Ada beberapa cara monetize YouTube yang bisa dicoba. Seperti penayangan iklan, konten bersponsor, ataupun adsense dari YouTube itu sendiri. Namun, untuk mendapatkan status monetized, terdapat syarat dan kebijakan yang mesti Anda lewati dan penuhi.Misalnya, Anda ingin mendapatkan adsense dari YouTube itu sendiri, lalu ada beberapa syarat-syarat yang mesti kamu penuhi. Apa saja syarat monetize Youtube? Berikut daftar kebijakan YouTube bagi penggunanya agar mendapatkan adsense monetize adalah\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/summarize",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"summarize"
 							]
 						}
 					},
@@ -300,7 +436,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"num_sentences\": 2,\r\n    \r\n    \"text\": \"Apa itu monetize dan platform apa saja yang bisa di monetize? Berikut penjelasannya.Di era digital seperti sekarang, kita bisa dengan mudah mendapatkan uang melalui media sosial, seperti YouTube ataupun Tiktok dengan sistem monetize. Monetize adalah cara untuk mengubah sesuatu menjadi uang.Lalu bagaimana cara kerja monetize itu sendiri? Pada artikel kali ini OCBC NISP akan membahas tentang pengertian, tujuan, keuntungan serta cara melakukan monetize pada Youtube dan Tiktok. Yuk simak!Apa itu Monetize?Secara umum, istilah monetize adalah cara untuk merubah sesuatu menjadi penghasilan yaitu uang. Di dalam lingkup digital dan media sosial, monetize memiliki arti yang sedikit berbeda. Monetize, yaitu ketika seseorang memiliki sebuah website atau media sosial seperti Instagram, TikTok, atau YouTube. Lalu platform tersebut mereka manfaatkan untuk mendapatkan uang.Ada banyak pilihan cara yang bisa orang tersebut gunakan dalam monetize platform-nya. Misalnya dengan cara endorse, adsense, partnership, dan sebagainya. Namun, untuk dapat melakukan monetize secara optimal, tentunya tidak mudah. Agar platform mereka mencapai status monetized, mereka wajib menaati berbagai syarat dan ketentuan dari platform tersebut atau pihak yang memberikan monetize.Cara Monetize YouTubeSesuai dengan pengertian monetize artinya menghasilkan uang, YouTube menjadi salah satu platform digital paling umum untuk di monetize. Misalnya, Anda adalah seorang koki yang ingin menjadi content creator di YouTube. Anda bermaksud untuk mendapatkan penghasilan melalui konten video memasak yang diunggah pada YouTube channel Anda.Agar konten video Anda dapat menghasilkan uang, tentunya perlu berstatus monetized. Ada beberapa cara monetize YouTube yang bisa dicoba. Seperti penayangan iklan, konten bersponsor, ataupun adsense dari YouTube itu sendiri. Namun, untuk mendapatkan status monetized, terdapat syarat dan kebijakan yang mesti Anda lewati dan penuhi.Misalnya, Anda ingin mendapatkan adsense dari YouTube itu sendiri, lalu ada beberapa syarat-syarat yang mesti kamu penuhi. Apa saja syarat monetize Youtube? Berikut daftar kebijakan YouTube bagi penggunanya agar mendapatkan adsense monetize adalah\"\r\n}",
+							"raw": "{\r\n    \"num_sentences\": 2,\r\n\r\n    \"text\": \"Apa itu monetize dan platform apa saja yang bisa di monetize? Berikut penjelasannya.Di era digital seperti sekarang, kita bisa dengan mudah mendapatkan uang melalui media sosial, seperti YouTube ataupun Tiktok dengan sistem monetize. Monetize adalah cara untuk mengubah sesuatu menjadi uang.Lalu bagaimana cara kerja monetize itu sendiri? Pada artikel kali ini OCBC NISP akan membahas tentang pengertian, tujuan, keuntungan serta cara melakukan monetize pada Youtube dan Tiktok. Yuk simak!Apa itu Monetize?Secara umum, istilah monetize adalah cara untuk merubah sesuatu menjadi penghasilan yaitu uang. Di dalam lingkup digital dan media sosial, monetize memiliki arti yang sedikit berbeda. Monetize, yaitu ketika seseorang memiliki sebuah website atau media sosial seperti Instagram, TikTok, atau YouTube. Lalu platform tersebut mereka manfaatkan untuk mendapatkan uang.Ada banyak pilihan cara yang bisa orang tersebut gunakan dalam monetize platform-nya. Misalnya dengan cara endorse, adsense, partnership, dan sebagainya. Namun, untuk dapat melakukan monetize secara optimal, tentunya tidak mudah. Agar platform mereka mencapai status monetized, mereka wajib menaati berbagai syarat dan ketentuan dari platform tersebut atau pihak yang memberikan monetize.Cara Monetize YouTubeSesuai dengan pengertian monetize artinya menghasilkan uang, YouTube menjadi salah satu platform digital paling umum untuk di monetize. Misalnya, Anda adalah seorang koki yang ingin menjadi content creator di YouTube. Anda bermaksud untuk mendapatkan penghasilan melalui konten video memasak yang diunggah pada YouTube channel Anda.Agar konten video Anda dapat menghasilkan uang, tentunya perlu berstatus monetized. Ada beberapa cara monetize YouTube yang bisa dicoba. Seperti penayangan iklan, konten bersponsor, ataupun adsense dari YouTube itu sendiri. Namun, untuk mendapatkan status monetized, terdapat syarat dan kebijakan yang mesti Anda lewati dan penuhi.Misalnya, Anda ingin mendapatkan adsense dari YouTube itu sendiri, lalu ada beberapa syarat-syarat yang mesti kamu penuhi. Apa saja syarat monetize Youtube? Berikut daftar kebijakan YouTube bagi penggunanya agar mendapatkan adsense monetize adalah\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
